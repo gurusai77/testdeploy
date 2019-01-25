@@ -27,21 +27,31 @@ pipeline {
         }
         
         stage('lint') {
+            steps{
+                echo "no lint configured"
+            }
         }
         stage ('unit test') {
+            steps{
+                echo "no unit tests configured"
+            }
         }
         
         stage('package') {
+            steps {
             withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'APIGW-QA-Jenkins', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
                                 sh "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY AWS_DEFAULT_REGION=us-east-1 aws cloudformation package " +
                                         "--template-file saml.yaml " +
                                         "--s3-bucket codedeplotestsai " +
                                         "--output-template-file post-saml.yaml "
                             }
+            }   
         }
         
         stage('deploy'){
-        
+            steps {
+                echo "deploy will be setup"
+            }
         }
     }
 }
