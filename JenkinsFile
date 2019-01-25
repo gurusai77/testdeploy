@@ -39,7 +39,7 @@ pipeline {
         
         stage('package') {
             steps {
-            withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'APIGW-QA-Jenkins', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+            withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'Lambda-Jenkins', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
                                 sh "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY AWS_DEFAULT_REGION=us-east-1 aws cloudformation package " +
                                         "--template-file saml.yaml " +
                                         "--s3-bucket codedeplotestsai " +
