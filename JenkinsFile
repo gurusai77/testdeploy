@@ -25,6 +25,8 @@ pipeline {
                 echo "Choice: ${params.CHOICE}"
 
                 echo "Password: ${params.PASSWORD}"
+                
+                sh "npm -v"
             }
         }
     }
