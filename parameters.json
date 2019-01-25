@@ -1,0 +1,14 @@
+[
+  {
+    "ParameterKey": "SamMultipler",
+    "ParameterValue": "20"
+  }, 
+  {
+    "ParameterKey": "OriginUrl",
+    "ParameterValue": "*"
+  },
+  {
+    "ParameterKey": "TestParameters",
+    "ParameterValue": "test"
+  }
+]
