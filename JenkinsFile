@@ -21,6 +21,7 @@ pipeline {
                 echo "Toggle: ${params.TOGGLE}"
 
                 echo "Choice: ${params.CHOICE}"
+                System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")
 
                 sh "npm install"
             }
@@ -28,7 +29,17 @@ pipeline {
         
         stage('lint') {
             steps{
-                echo "no lint configured"
+                 task('Lint') {
+                        sh "mkdir -p reports"
+
+                        echo "Starting Lint..."
+
+                        
+                        sh "npm run standard --silent -- &> reports/lint.txt"
+                        
+
+                        echo "Lint executed!"
+                    }
             }
         }
         stage ('unit test') {
