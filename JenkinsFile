@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env groovy
 
 pipeline {
     agent any
@@ -10,10 +10,6 @@ pipeline {
         booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
 
         choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
-
-        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
-
-        file(name: "FILE", description: "Choose a file to upload")
     }
     stages {
         stage('build app') {
@@ -26,10 +22,26 @@ pipeline {
 
                 echo "Choice: ${params.CHOICE}"
 
-                echo "Password: ${params.PASSWORD}"
-                
                 sh "npm install"
             }
+        }
+        
+        stage('lint') {
+        }
+        stage ('unit test') {
+        }
+        
+        stage('package') {
+            withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'APIGW-QA-Jenkins', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+                                sh "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY AWS_DEFAULT_REGION=us-east-1 aws cloudformation package " +
+                                        "--template-file saml.yaml " +
+                                        "--s3-bucket codedeplotestsai " +
+                                        "--output-template-file post-saml.yaml "
+                            }
+        }
+        
+        stage('deploy'){
+        
         }
     }
 }
