@@ -53,7 +53,7 @@ pipeline {
            withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'Lambda-Jenkins', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
                                 sh "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY AWS_DEFAULT_REGION=us-east-1 aws cloudformation deploy " +
                                         "--template-file post-saml.yaml " +
-                                        "--stack-name updatefirstsamdeploy --capabilities CAPABILITY_IAM " +
+                                        "--stack-name firstsamdeploy --capabilities CAPABILITY_IAM " +
                                         "--parameter-overrides \$(cat parameters.properties)"
                             }
             }
