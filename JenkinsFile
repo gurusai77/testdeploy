@@ -16,7 +16,7 @@ pipeline {
         file(name: "FILE", description: "Choose a file to upload")
     }
     stages {
-        stage('Example') {
+        stage('build app') {
             steps {
                 echo "Hello ${params.PERSON}"
 
@@ -28,7 +28,7 @@ pipeline {
 
                 echo "Password: ${params.PASSWORD}"
                 
-                sh "npm -v"
+                sh "npm install"
             }
         }
     }
