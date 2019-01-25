@@ -12,7 +12,7 @@ Parameters:
     Immediate:
         Description: "The origin url to allow CORS requests from. This will be the base URL of your static SAM website."
         Type: "String"
-        Default:eee
+        Default: "eee"
 Resources:
     GetSAMPartyCount:
         Type: AWS::Serverless::Function
