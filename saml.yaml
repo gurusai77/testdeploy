@@ -9,6 +9,10 @@ Parameters:
     TestParameters:
         Description: "The origin url to allow CORS requests from. This will be the base URL of your static SAM website."
         Type: "String"
+    Immediate:
+        Description: "The origin url to allow CORS requests from. This will be the base URL of your static SAM website."
+        Type: "String"
+        Default:eee
 Resources:
     GetSAMPartyCount:
         Type: AWS::Serverless::Function
@@ -21,6 +25,7 @@ Resources:
                     SAM_MULTIPLIER: !Ref SamMultipler
                     ORIGIN_URL: !Ref OriginUrl
                     TestParameters: !Ref TestParameters
+                    Immediate: !Ref Immediate
             Events:
               GetResource:
                 Type: Api
