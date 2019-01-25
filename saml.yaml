@@ -5,10 +5,7 @@ Parameters:
         Type: "String"
     OriginUrl:
         Description: "The origin url to allow CORS requests from. This will be the base URL of your static SAM website."
-        Type: "String"
-    TestParameters:
-        Description: "The origin url to allow CORS requests from. This will be the base URL of your static SAM website."
-        Type: "String"    
+        Type: "String" 
 Resources:
     GetSAMPartyCount:
         Type: AWS::Serverless::Function
