@@ -32,7 +32,7 @@ pipeline {
         
         stage('lint') {
             steps{
-                 task('Lint') {
+                
                         sh "mkdir -p reports"
 
                         echo "Starting Lint..."
@@ -42,7 +42,7 @@ pipeline {
                         
 
                         echo "Lint executed!"
-                    }
+                    
             }
         }
         stage ('unit test') {
