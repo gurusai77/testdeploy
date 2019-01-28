@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-String nodejs_version = 'NodeJS_8'
+String nodejs_version = 'NodeJS'
 
 pipeline {
     agent any
