@@ -1,5 +1,7 @@
 #!/usr/bin/env groovy
 
+String nodejs_version = 'NodeJS_8'
+
 pipeline {
     agent any
     parameters {
@@ -38,7 +40,9 @@ pipeline {
                         echo "Starting Lint..."
 
                         
-                        sh "npm run standard --silent -- &> reports/lint.txt"
+                        nodejs(nodejs_version) {
+                            sh "npm run standard --silent -- &> reports/lint.txt"
+                        }
                         
 
                         echo "Lint executed!"
