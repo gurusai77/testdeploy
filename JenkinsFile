@@ -35,17 +35,7 @@ pipeline {
         stage('lint') {
             steps{
                 
-                        sh "mkdir -p reports"
-
-                        echo "Starting Lint..."
-
-                        
-                        nodejs(nodejs_version) {
-                            sh "npm run standard --silent -- &> reports/lint.txt"
-                        }
-                        
-
-                        echo "Lint executed!"
+                       "no code quality"
                     
             }
         }
