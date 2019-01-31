@@ -35,7 +35,7 @@ pipeline {
         stage('lint') {
             steps{
                 
-                       "no code quality"
+                       echo "no code quality"
                     
             }
         }
